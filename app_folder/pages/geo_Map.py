@@ -88,7 +88,7 @@ layout = html.Div([
             html.Div('''Todays update by continent ''', style={
                 'color': 'gold', 'fontSize': 18}),
             dcc.Dropdown(
-                id="new_dropdown", style={'color': 'gold', 'background': 'black', 'border': "1px black groove"},
+                id="new_dropdown", style={'color': 'blue', 'background': 'black', 'border': "1px black groove"},
                 options=[{'label': x, 'value': x}
                          for x in new_data['continent']],
 
@@ -102,7 +102,7 @@ layout = html.Div([
             html.Div('''Todays update by country ''', style={
                 'color': 'gold', 'fontSize': 18}),
             dcc.Dropdown(
-                id="country_dropdown", style={'color': 'gold', 'background': 'black', 'border': "1px black groove"},
+                id="country_dropdown", style={'color': 'blue', 'background': 'black', 'border': "1px black groove"},
                 options=[{'label': x, 'value': x}
                          for x in newCon_data['country']],
 

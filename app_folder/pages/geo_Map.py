@@ -10,6 +10,7 @@ import pandas as pd
 from pytz import country_names
 import requests
 import time
+import datetime
 
 import dash_bootstrap_components as dbc
 
@@ -164,6 +165,13 @@ layout = html.Div([
 
         ], width={'size': 2, 'offset': 0}, style={"border": "1px black groove"}),
 
+        html.Div(id='latest-timestamp', style={"padding": "20px"}),
+        dcc.Interval(
+            id='interval-component',
+            interval=1 * 1000,
+            n_intervals=0
+        ),
+
     ], style={"border": "1px black groove"}),
 
     html.Br(),
@@ -215,3 +223,11 @@ def filter_scatter(conNew_value):
     # d_data_d = d_data.reset_index(drop=True)
 
     return html.Div([html.P('{} '.format(d_ConData['country'].str.upper().to_string(index=False))), html.Br()]), html.Div([html.P('Covid Cases : {}'.format(d_ConData['cases'].to_string(index=False)))]), html.Div([html.P('Today Cases : {}'.format(d_ConData['todayCases'].to_string(index=False)))]), html.Div([html.P('Critical : {} '.format(d_ConData['critical'].to_string(index=False)))]), html.Div([html.P('Deaths : {}'.format(d_ConData['deaths'].to_string(index=False)))]), html.Div([html.P('Todays Deaths : {}'.format(d_ConData['todayDeaths'].to_string(index=False)))]), html.Div([html.P('Today Recovered : {}'.format(d_ConData['todayRecovered'].to_string(index=False)))]), html.Div([html.P('Tests : {}'.format(d_ConData['tests'].to_string(index=False)))]),
+
+
+@callback(
+    [Output('latest-timestamp', 'children')],
+    [Input('interval-component', 'n_intervals')]
+)
+def update_timestamp(interval):
+    return [html.Span(f"Last updated: {datetime.datetime.now()}")]

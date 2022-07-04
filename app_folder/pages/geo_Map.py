@@ -68,7 +68,7 @@ layout = html.Div([
                     value=["USA"],
                     multi=True,),
                 html.Br(),
-                html.Div(''' Coronavirus (COVID-19) Update: FDA Recommends Inclusion of Omicron BA.4/5 Component
+                html.Marquee(''' Coronavirus (COVID-19) Update: FDA Recommends Inclusion of Omicron BA.4/5 Component
                              for COVID-19 Vaccine Booster Doses'''),
             ], width={'size': 5, 'offset': 1}, style={'font': 'Cursive'}),
 
@@ -84,9 +84,13 @@ layout = html.Div([
     html.Br(),
     dbc.Row([
         dbc.Col([
+            html.Div(html.Img(src=dash.get_asset_url(
+                'immune-response-pri-latest.jpg')), style={'height': '5%', 'width': '5%'}),
+        ], width={'size': 2, 'offset': 0}, style={"border": "1px black groove"}),
+        dbc.Col([
             # ''' drop down for live data Continental''',
             html.Div('''Todays update by continent ''', style={
-                'color': 'gold', 'fontSize': 18}),
+                'color': 'brown', 'fontSize': 18, 'font-family': 'Cursive'}),
             dcc.Dropdown(
                 id="new_dropdown", style={'color': 'blue', 'background': 'black', 'border': "1px black groove"},
                 options=[{'label': x, 'value': x}
@@ -95,12 +99,12 @@ layout = html.Div([
                 value="Asia",
                 # multi=True,
             ),
-        ], width={'size': 2, 'offset': 6}),
+        ], width={'size': 2, 'offset': 3}),
 
         dbc.Col([
             # ''' dropdown for live update country''',
             html.Div('''Todays update by country ''', style={
-                'color': 'gold', 'fontSize': 18}),
+                'color': 'brown', 'fontSize': 18, 'font-family': 'Cursive'}),
             dcc.Dropdown(
                 id="country_dropdown", style={'color': 'blue', 'background': 'black', 'border': "1px black groove"},
                 options=[{'label': x, 'value': x}
@@ -118,10 +122,7 @@ layout = html.Div([
 
     dbc.Row([
         # ''' div for picture''',
-        dbc.Col([
-            html.Div(html.Img(src=dash.get_asset_url(
-                'immune-response-pri-latest.jpg')), style={'height': '5%', 'width': '5%'}),
-        ], width={'size': 2, 'offset': 1}, style={"border": "1px black groove"}),
+
     ]),
 
     dbc.Row([
@@ -137,14 +138,14 @@ layout = html.Div([
 
             html.Div(id='new_div', style={
                         'color': 'green', 'fontSize': 18}),
-            html.Div(id='new_div1'),
-            html.Div(id='new_div2'),
-            html.Div(id='new_div3'),
-            html.Div(id='new_div4'),
-            html.Div(id='new_div5'),
-            html.Div(id='new_div6'),
-            html.Div(id='new_div7'),
-            html.Div(id='new_div8')
+            html.Div(id='new_div1', style={'font-family': 'Cursive'}),
+            html.Div(id='new_div2', style={'font-family': 'Cursive'}),
+            html.Div(id='new_div3', style={'font-family': 'Cursive'}),
+            html.Div(id='new_div4', style={'font-family': 'Cursive'}),
+            html.Div(id='new_div5', style={'font-family': 'Cursive'}),
+            html.Div(id='new_div6', style={'font-family': 'Cursive'}),
+            html.Div(id='new_div7', style={'font-family': 'Cursive'}),
+            html.Div(id='new_div8', style={'font-family': 'Cursive'})
 
         ], width={'size': 2, 'offset': 1}, style={"border": "1px black groove"}),
         dbc.Col([
@@ -152,14 +153,14 @@ layout = html.Div([
 
             html.Div(id='newCon_div', style={
                         'color': 'green', 'fontSize': 18}),
-            html.Div(id='newCon_div1'),
-            html.Div(id='newCon_div2'),
-            html.Div(id='newCon_div3'),
-            html.Div(id='newCon_div4'),
-            html.Div(id='newCon_div5'),
-            html.Div(id='newCon_div6'),
-            html.Div(id='newCon_div7'),
-            html.Div(id='newCon_div8')
+            html.Div(id='newCon_div1', style={'font-family': 'Cursive'}),
+            html.Div(id='newCon_div2', style={'font-family': 'Cursive'}),
+            html.Div(id='newCon_div3', style={'font-family': 'Cursive'}),
+            html.Div(id='newCon_div4', style={'font-family': 'Cursive'}),
+            html.Div(id='newCon_div5', style={'font-family': 'Cursive'}),
+            html.Div(id='newCon_div6', style={'font-family': 'Cursive'}),
+            html.Div(id='newCon_div7', style={'font-family': 'Cursive'}),
+            html.Div(id='newCon_div8', style={'font-family': 'Cursive'})
 
         ], width={'size': 2, 'offset': 0}, style={"border": "1px black groove"}),
 

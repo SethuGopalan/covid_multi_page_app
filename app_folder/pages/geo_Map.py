@@ -121,7 +121,7 @@ layout = html.Div([
         dbc.Col([
             html.Div(html.Img(src=dash.get_asset_url(
                 'immune-response-pri-latest.jpg')), style={'height': '5%', 'width': '5%'}),
-        ], width={'size': 2, 'offset': 1}),
+        ], width={'size': 2, 'offset': 1}, style={"border": "1px black groove"}),
     ]),
 
     dbc.Row([

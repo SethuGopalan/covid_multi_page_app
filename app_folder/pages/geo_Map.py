@@ -129,7 +129,7 @@ layout = html.Div([
         dbc.Col([
 
             dcc.Graph(id="graph1"),
-        ], width={'size': 5, 'offset': 1}, style={"border": "1px white ridge"}),
+        ], width={'size': 5, 'offset': 1}, style={"border": "1px black groove"}),
 
 
         dbc.Col([

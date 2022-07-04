@@ -109,9 +109,9 @@ layout = html.Div([
                 value="India",
                 # multi=True,
             ),
-        ], width={'size': 2, 'offset': 0}),
+        ], width={'size': 2, 'offset': 1}),
 
-    ], justify='center'),
+    ], justify='center', style={"border": "1px black groove", }),
 
 
     html.Br(),
@@ -146,7 +146,7 @@ layout = html.Div([
             html.Div(id='new_div7'),
             html.Div(id='new_div8')
 
-        ], width={'size': 2, 'offset': 1}, style={"border": "1px white ridge"}),
+        ], width={'size': 2, 'offset': 1}, style={"border": "1px black groove"}),
         dbc.Col([
             # ''' Div for live update continantal''',
 
@@ -161,9 +161,9 @@ layout = html.Div([
             html.Div(id='newCon_div7'),
             html.Div(id='newCon_div8')
 
-        ], width={'size': 2, 'offset': 0}, style={"border": "1px white ridge"}),
+        ], width={'size': 2, 'offset': 0}, style={"border": "1px black groove"}),
 
-    ]),
+    ], style={"border": "1px black groove"}),
 
     html.Br(),
 
@@ -197,7 +197,7 @@ def filter_scatter(cont_value):
     d_data = new_data[new_data['continent'] == cont_value]
     # d_data_d = d_data.reset_index(drop=True)
 
-    return html.Div([html.P('{} '.format(d_data['continent'].str.upper().to_string(index=False))), html.Br()]), html.Div([html.P('Covid Cases : {}'.format(d_data['cases'].to_string(index=False)))]), html.Div([html.P('Today Cases :{}'.format(d_data['todayCases'].to_string(index=False)))]), html.Div([html.P('Critical : {} '.format(d_data['critical'].to_string(index=False)))]), html.Div([html.P('Deaths :{}'.format(d_data['deaths'].to_string(index=False)))]), html.Div([html.P('Todays Deaths :{}'.format(d_data['todayDeaths'].to_string(index=False)))]), html.Div([html.P('Today Recovered :{}'.format(d_data['todayRecovered'].to_string(index=False)))]), html.Div([html.P('Tests :{}'.format(d_data['tests'].to_string(index=False)))]),
+    return html.Div([html.P('{} '.format(d_data['continent'].str.upper().to_string(index=False))), html.Br()]), html.Div([html.P('Covid Cases : {}'.format(d_data['cases'].to_string(index=False)))]), html.Div([html.P('Today Cases : {}'.format(d_data['todayCases'].to_string(index=False)))]), html.Div([html.P('Critical : {} '.format(d_data['critical'].to_string(index=False)))]), html.Div([html.P('Deaths : {}'.format(d_data['deaths'].to_string(index=False)))]), html.Div([html.P('Todays Deaths : {}'.format(d_data['todayDeaths'].to_string(index=False)))]), html.Div([html.P('Today Recovered : {}'.format(d_data['todayRecovered'].to_string(index=False)))]), html.Div([html.P('Tests : {}'.format(d_data['tests'].to_string(index=False)))]),
 
 
 @ callback(Output("newCon_div", "children"),
@@ -213,4 +213,4 @@ def filter_scatter(conNew_value):
     d_ConData = newCon_data[newCon_data['country'] == conNew_value]
     # d_data_d = d_data.reset_index(drop=True)
 
-    return html.Div([html.P('{} '.format(d_ConData['country'].str.upper().to_string(index=False))), html.Br()]), html.Div([html.P('Covid Cases : {}'.format(d_ConData['cases'].to_string(index=False)))]), html.Div([html.P('Today Cases :{}'.format(d_ConData['todayCases'].to_string(index=False)))]), html.Div([html.P('Critical : {} '.format(d_ConData['critical'].to_string(index=False)))]), html.Div([html.P('Deaths :{}'.format(d_ConData['deaths'].to_string(index=False)))]), html.Div([html.P('Todays Deaths :{}'.format(d_ConData['todayDeaths'].to_string(index=False)))]), html.Div([html.P('Today Recovered :{}'.format(d_ConData['todayRecovered'].to_string(index=False)))]), html.Div([html.P('Tests :{}'.format(d_ConData['tests'].to_string(index=False)))]),
+    return html.Div([html.P('{} '.format(d_ConData['country'].str.upper().to_string(index=False))), html.Br()]), html.Div([html.P('Covid Cases : {}'.format(d_ConData['cases'].to_string(index=False)))]), html.Div([html.P('Today Cases : {}'.format(d_ConData['todayCases'].to_string(index=False)))]), html.Div([html.P('Critical : {} '.format(d_ConData['critical'].to_string(index=False)))]), html.Div([html.P('Deaths : {}'.format(d_ConData['deaths'].to_string(index=False)))]), html.Div([html.P('Todays Deaths : {}'.format(d_ConData['todayDeaths'].to_string(index=False)))]), html.Div([html.P('Today Recovered : {}'.format(d_ConData['todayRecovered'].to_string(index=False)))]), html.Div([html.P('Tests : {}'.format(d_ConData['tests'].to_string(index=False)))]),

@@ -61,7 +61,7 @@ layout = html.Div([
             # ''' drop down for geo map''',
             dbc.Col([
                 dcc.Dropdown(
-                    id="my_dropdown", style={'color': 'gold', 'background': 'black'},
+                    id="my_dropdown", style={'color': 'gold', 'background': 'black', 'border': "1px black groove"},
                     options=[{'label': i, 'value': i}
                              for i in data2.unique()],
 
@@ -79,7 +79,7 @@ layout = html.Div([
                     developing more serious complications from COVID-19 illness'''),
 
                     ], width={'size': 5, 'offset': 0}),
-            ], style={"border": "4px black outset", 'font-family': 'Cursive'}),
+            ], style={"border": "1px black groove", 'font-family': 'Cursive'}),
 
     html.Br(),
     dbc.Row([

@@ -67,10 +67,14 @@ layout = html.Div([
                              for i in newCon_data['country']],
 
                     value=["UK", 'USA', 'China', 'India', 'Russia'],
-                    multi=True,),
+                    multi=True),
                 html.Br(),
-                html.Marquee(''' Coronavirus (COVID-19) Update: FDA Recommends Inclusion of Omicron BA.4/5 Component
-                             for COVID-19 Vaccine Booster Doses''' 'Todays Covid case update for {} Todays cases {} Todats Deaths Today Recovered {}'.format(new_data['continent'][0], new_data['todayCases'][0], new_data['todayCases'][0], new_data['todayDeaths'][0], new_data['todayRecovered'][0], new_data['continent'][1], new_data['todayCases'][1], new_data['todayCases'][1], new_data['todayDeaths'][1], new_data['todayRecovered'][1])),
+                html.Div([
+
+                    html.Marquee(' Coronavirus (COVID-19) Update: FDA Recommends Inclusion of Omicron BA.4/5 Component for COVID-19 Vaccine Booster Doses Todays Covid case update for {},Todays cases : {},Todays Deaths : {},Today Recovered {},...{},Todays cases : {},Todays Deaths : {},Today Recovered : {},.... {},Todays cases : {},Todays Deaths : {},Today Recovered : {} , ... {}, Todays cases : {},Todays Deaths : {},Today Recovered : {}'.format(new_data['continent'][0], new_data['todayCases'][0], new_data['todayDeaths'][0], new_data['todayRecovered'][0],  new_data['continent'][1], new_data['todayCases']
+                                                                                                                                                                                                                                                                                                                                                                                                                                                             [1], new_data['todayDeaths'][1], new_data['todayRecovered'][1], new_data['continent'][2], new_data['todayCases'][2], new_data['todayCases'][2], new_data['todayDeaths'][2], new_data['todayRecovered'][2], new_data['continent'][3], new_data['todayCases'][3], new_data['todayDeaths'][3], new_data['todayRecovered'][3], new_data['continent'][4], new_data['todayCases'][4], new_data['todayDeaths'][4], new_data['todayRecovered'][4])),
+                ], style={'color': 'white', 'fontSize': 18, 'font-family': 'Cursive'}),
+
             ], width={'size': 5, 'offset': 1}, style={'font': 'Cursive'}),
 
             dbc.Col([
@@ -187,8 +191,7 @@ layout = html.Div([
 def filter_scatter(country):
 
     dff = newCon_data[newCon_data['country'].isin(country)]
-    # fig = px.scatter_geo(dff, locations='country',  color='country',  hover_data=['updated', 'country', 'countryInfo', 'cases', 'todayCases', 'deaths', 'todayDeaths', 'recovered', 'todayRecovered', 'active', 'critical', 'casesPerOneMillion', 'deathsPerOneMillion', 'tests', 'testsPerOneMillion', 'population', 'continent']
-    #                      )
+
     fig = px.choropleth(dff, locations='country', locationmode="country names", color='country',
                         color_continuous_scale="Viridis",
                         animation_group='country',
@@ -197,12 +200,7 @@ def filter_scatter(country):
                         scope="world",
                         hover_data=['updated', 'country', 'countryInfo', 'cases', 'todayCases', 'deaths', 'todayDeaths', 'recovered', 'todayRecovered',
                                     'active', 'critical',   'tests', 'population', 'continent'],
-                        # mapbox_style="carto-positron",
-                        # zoom=0,
-                        # opacity=0.5,
-                        #    labels={'unemp':'unemployment rate'}
-                        # geojson='country'
-                        # facet_row='country'
+
                         )
     fig.update_traces(marker=dict(size=20), showlegend=True,
                       selector=dict(type="carto-positron"), mode='lines+markers+text')
@@ -241,7 +239,7 @@ def filter_scatter(conNew_value):
     return html.Div([html.P('{} '.format(d_ConData['country'].str.upper().to_string(index=False))), html.Br()]), html.Div([html.P('Covid Cases : {}'.format(d_ConData['cases'].to_string(index=False)))]), html.Div([html.P('Today Cases : {}'.format(d_ConData['todayCases'].to_string(index=False)))]), html.Div([html.P('Critical : {} '.format(d_ConData['critical'].to_string(index=False)))]), html.Div([html.P('Deaths : {}'.format(d_ConData['deaths'].to_string(index=False)))]), html.Div([html.P('Todays Deaths : {}'.format(d_ConData['todayDeaths'].to_string(index=False)))]), html.Div([html.P('Today Recovered : {}'.format(d_ConData['todayRecovered'].to_string(index=False)))]), html.Div([html.P('Tests : {}'.format(d_ConData['tests'].to_string(index=False)))]),
 
 
-@callback(
+@ callback(
     [Output('latest-timestamp', 'children')],
     [Input('interval-component', 'n_intervals')]
 )

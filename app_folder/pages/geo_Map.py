@@ -64,13 +64,13 @@ layout = html.Div([
                 dcc.Dropdown(
                     id="my_dropdown", style={'color': 'gold', 'background': 'black', 'border': "1px black groove"},
                     options=[{'label': i, 'value': i}
-                             for i in data2.unique()],
+                             for i in newCon_data['country']],
 
-                    value=["USA"],
+                    value=["UK", 'USA', 'China', 'India', 'Russia'],
                     multi=True,),
                 html.Br(),
                 html.Marquee(''' Coronavirus (COVID-19) Update: FDA Recommends Inclusion of Omicron BA.4/5 Component
-                             for COVID-19 Vaccine Booster Doses'''),
+                             for COVID-19 Vaccine Booster Doses''' 'Todays Covid case update for {} Todays cases {} Todats Deaths Today Recovered {}'.format(new_data['continent'][0], new_data['todayCases'][0], new_data['todayCases'][0], new_data['todayDeaths'][0], new_data['todayRecovered'][0], new_data['continent'][1], new_data['todayCases'][1], new_data['todayCases'][1], new_data['todayDeaths'][1], new_data['todayRecovered'][1])),
             ], width={'size': 5, 'offset': 1}, style={'font': 'Cursive'}),
 
             dbc.Col([
@@ -164,13 +164,15 @@ layout = html.Div([
             html.Div(id='newCon_div8', style={'font-family': 'Cursive'})
 
         ], width={'size': 2, 'offset': 0}, style={"border": "1px black groove"}),
-
-        html.Div(id='latest-timestamp', style={"padding": "20px"}),
-        dcc.Interval(
-            id='interval-component',
-            interval=1 * 1000,
-            n_intervals=0
-        ),
+        dbc.Col([
+            html.Div(id='latest-timestamp',
+                     style={"padding": "20px"}),
+            dcc.Interval(
+                id='interval-component',
+                interval=1 * 1000,
+                n_intervals=0
+            ),
+        ], width={'size': 4, 'offset': 8})
 
     ], style={"border": "1px black groove"}),
 
@@ -184,12 +186,26 @@ layout = html.Div([
 @ callback(Output("graph1", "figure"), Input("my_dropdown", "value"))
 def filter_scatter(country):
 
-    dff = df[df['iso_alpha_3'].isin(country)]
-    fig = px.scatter_geo(dff, locations='iso_alpha_3',  color="iso_alpha_3", hover_name='iso_alpha_3', hover_data=['deaths', 'date', 'confirmed', 'recovered'], animation_group='iso_alpha_3'
-
-                         )
+    dff = newCon_data[newCon_data['country'].isin(country)]
+    # fig = px.scatter_geo(dff, locations='country',  color='country',  hover_data=['updated', 'country', 'countryInfo', 'cases', 'todayCases', 'deaths', 'todayDeaths', 'recovered', 'todayRecovered', 'active', 'critical', 'casesPerOneMillion', 'deathsPerOneMillion', 'tests', 'testsPerOneMillion', 'population', 'continent']
+    #                      )
+    fig = px.choropleth(dff, locations='country', locationmode="country names", color='country',
+                        color_continuous_scale="Viridis",
+                        animation_group='country',
+                        range_color=(0, 12),
+                        projection='robinson',
+                        scope="world",
+                        hover_data=['updated', 'country', 'countryInfo', 'cases', 'todayCases', 'deaths', 'todayDeaths', 'recovered', 'todayRecovered',
+                                    'active', 'critical',   'tests', 'population', 'continent'],
+                        # mapbox_style="carto-positron",
+                        # zoom=0,
+                        # opacity=0.5,
+                        #    labels={'unemp':'unemployment rate'}
+                        # geojson='country'
+                        # facet_row='country'
+                        )
     fig.update_traces(marker=dict(size=20), showlegend=True,
-                      selector=dict(type='scattergeo'), mode='lines+markers+text')
+                      selector=dict(type="carto-positron"), mode='lines+markers+text')
     return fig
 
 
@@ -230,4 +246,4 @@ def filter_scatter(conNew_value):
     [Input('interval-component', 'n_intervals')]
 )
 def update_timestamp(interval):
-    return [html.Span(f"Last updated: {datetime.datetime.now()}")]
+    return [html.Div(f"Last updated: {datetime.datetime.now()}")]

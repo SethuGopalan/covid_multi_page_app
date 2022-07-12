@@ -72,16 +72,17 @@ layout = html.Div([
                 html.Div([
 
                     html.Marquee(' Coronavirus (COVID-19) Update: FDA Recommends Inclusion of Omicron BA.4/5 Component for COVID-19 Vaccine Booster Doses Todays Covid case update for {},Todays cases : {},Todays Deaths : {},Today Recovered {},...{},Todays cases : {},Todays Deaths : {},Today Recovered : {},.... {},Todays cases : {},Todays Deaths : {},Today Recovered : {} , ... {}, Todays cases : {},Todays Deaths : {},Today Recovered : {}'.format(new_data['continent'][0], new_data['todayCases'][0], new_data['todayDeaths'][0], new_data['todayRecovered'][0],  new_data['continent'][1], new_data['todayCases']
-                                                                                                                                                                                                                                                                                                                                                                                                                                                             [1], new_data['todayDeaths'][1], new_data['todayRecovered'][1], new_data['continent'][2], new_data['todayCases'][2], new_data['todayCases'][2], new_data['todayDeaths'][2], new_data['todayRecovered'][2], new_data['continent'][3], new_data['todayCases'][3], new_data['todayDeaths'][3], new_data['todayRecovered'][3], new_data['continent'][4], new_data['todayCases'][4], new_data['todayDeaths'][4], new_data['todayRecovered'][4])),
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                [1], new_data['todayDeaths'][1], new_data['todayRecovered'][1], new_data['continent'][2], new_data['todayCases'][2], new_data['todayCases'][2], new_data['todayDeaths'][2], new_data['todayRecovered'][2], new_data['continent'][3], new_data['todayCases'][3], new_data['todayDeaths'][3], new_data['todayRecovered'][3], new_data['continent'][4], new_data['todayCases'][4], new_data['todayDeaths'][4], new_data['todayRecovered'][4])),
                 ], style={'color': 'white', 'fontSize': 18, 'font-family': 'Cursive'}),
 
             ], width={'size': 5, 'offset': 1}, style={'font': 'Cursive'}),
 
             dbc.Col([
-                    html.Div('''COVID-19 is caused by a coronavirus called SARS-CoV-2.
+                    html.Div(['''COVID-19 is caused by a coronavirus called SARS-CoV-2.
                     Older adults and people who have severe underlying medical conditions
                     like heart or lung disease or diabetes seem to be at higher risk for
-                    developing more serious complications from COVID-19 illness'''),
+                    developing more serious complications from COVID-19 illness'''], style={
+                        'font-family': 'Sans-serif', 'color': 'gray', 'fontSize': 16, "border": "1px black groove"}),
 
                     ], width={'size': 5, 'offset': 0}),
             ], style={"border": "1px black groove", 'font-family': 'Cursive'}),
@@ -95,7 +96,7 @@ layout = html.Div([
         dbc.Col([
             # ''' drop down for live data Continental''',
             html.Div('''Todays update by continent ''', style={
-                'color': 'brown', 'fontSize': 18, 'font-family': 'Cursive'}),
+                'color': 'green', 'fontSize': 16, 'font-family': 'Sans-serif'}),
             dcc.Dropdown(
                 id="new_dropdown", style={'color': 'blue', 'background': 'black', 'border': "1px black groove"},
                 options=[{'label': x, 'value': x}
@@ -109,7 +110,7 @@ layout = html.Div([
         dbc.Col([
             # ''' dropdown for live update country''',
             html.Div('''Todays update by country ''', style={
-                'color': 'brown', 'fontSize': 18, 'font-family': 'Cursive'}),
+                'color': 'green', 'fontSize': 16, 'font-family': 'Sans-serif'}),
             dcc.Dropdown(
                 id="country_dropdown", style={'color': 'blue', 'background': 'black', 'border': "1px black groove"},
                 options=[{'label': x, 'value': x}
@@ -142,30 +143,46 @@ layout = html.Div([
             # ''' Div for live update continantal''',
 
             html.Div(id='new_div', style={
-                        'color': 'green', 'fontSize': 18}),
-            html.Div(id='new_div1', style={'font-family': 'Cursive'}),
-            html.Div(id='new_div2', style={'font-family': 'Cursive'}),
-            html.Div(id='new_div3', style={'font-family': 'Cursive'}),
-            html.Div(id='new_div4', style={'font-family': 'Cursive'}),
-            html.Div(id='new_div5', style={'font-family': 'Cursive'}),
-            html.Div(id='new_div6', style={'font-family': 'Cursive'}),
-            html.Div(id='new_div7', style={'font-family': 'Cursive'}),
-            html.Div(id='new_div8', style={'font-family': 'Cursive'})
+                        'color': 'green', 'fontSize': 14, "border": "1px black groove", 'font-family': 'Sans-serif'}),
+            html.Div(id='new_div1', style={'font-family': 'Sans-serif',
+                                           'color': 'gray', 'fontSize': 14, "border": "1px black groove"}),
+            html.Div(id='new_div2', style={'font-family': 'Sans-serif',
+                                           'color': 'gray', 'fontSize': 14, "border": "1px black groove"}),
+            html.Div(id='new_div3', style={'font-family': 'Sans-serif',
+                                           'color': 'gray', 'fontSize': 14, "border": "1px black groove"}),
+            html.Div(id='new_div4', style={'font-family': 'Sans-serif',
+                                           'color': 'gray', 'fontSize': 14, "border": "1px black groove"}),
+            html.Div(id='new_div5', style={'font-family': 'Sans-serif',
+                                           'color': 'gray', 'fontSize': 14, "border": "1px black groove"}),
+            html.Div(id='new_div6', style={'font-family': 'Sans-serif',
+                                           'color': 'gray', 'fontSize': 14, "border": "1px black groove"}),
+            html.Div(id='new_div7', style={'font-family': 'Sans-serif',
+                                           'color': 'gray', 'fontSize': 14, "border": "1px black groove"}),
+            html.Div(id='new_div8', style={'font-family': 'Sans-serif',
+                                           'color': 'gray', 'fontSize': 14, "border": "1px black groove"})
 
         ], width={'size': 2, 'offset': 1}, style={"border": "1px black groove"}),
         dbc.Col([
             # ''' Div for live update continantal''',
 
             html.Div(id='newCon_div', style={
-                        'color': 'green', 'fontSize': 18}),
-            html.Div(id='newCon_div1', style={'font-family': 'Cursive'}),
-            html.Div(id='newCon_div2', style={'font-family': 'Cursive'}),
-            html.Div(id='newCon_div3', style={'font-family': 'Cursive'}),
-            html.Div(id='newCon_div4', style={'font-family': 'Cursive'}),
-            html.Div(id='newCon_div5', style={'font-family': 'Cursive'}),
-            html.Div(id='newCon_div6', style={'font-family': 'Cursive'}),
-            html.Div(id='newCon_div7', style={'font-family': 'Cursive'}),
-            html.Div(id='newCon_div8', style={'font-family': 'Cursive'})
+                        'color': 'green', 'fontSize': 14, 'font-family': 'Sans-serif'}),
+            html.Div(id='newCon_div1', style={
+                     'font-family': 'Sans-serif', 'color': 'gray', 'fontSize': 14, "border": "1px black groove"}),
+            html.Div(id='newCon_div2', style={
+                     'font-family': 'Sans-serif', 'color': 'gray', 'fontSize': 14, "border": "1px black groove"}),
+            html.Div(id='newCon_div3', style={
+                     'font-family': 'Sans-serif', 'color': 'gray', 'fontSize': 14, "border": "1px black groove"}),
+            html.Div(id='newCon_div4', style={
+                     'font-family': 'Sans-serif', 'color': 'gray', 'fontSize': 14, "border": "1px black groove"}),
+            html.Div(id='newCon_div5', style={
+                     'font-family': 'Sans-serif', 'color': 'gray', 'fontSize': 14, "border": "1px black groove"}),
+            html.Div(id='newCon_div6', style={
+                     'font-family': 'Sans-serif', 'color': 'gray', 'fontSize': 14, "border": "1px black groove"}),
+            html.Div(id='newCon_div7', style={
+                     'font-family': 'Sans-serif', 'color': 'gray', 'fontSize': 14, "border": "1px black groove"}),
+            html.Div(id='newCon_div8', style={
+                     'font-family': 'Sans-serif', 'color': 'gray', 'fontSize': 14, "border": "1px black groove"})
 
         ], width={'size': 2, 'offset': 0}, style={"border": "1px black groove"}),
         dbc.Col([
@@ -184,7 +201,7 @@ layout = html.Div([
 
 
 
-])
+], style={"border": "1px black groove"})
 
 
 @ callback(Output("graph1", "figure"), Input("my_dropdown", "value"))
@@ -195,6 +212,7 @@ def filter_scatter(country):
     fig = px.choropleth(dff, locations='country', locationmode="country names", color='country',
                         color_continuous_scale="Viridis",
                         animation_group='country',
+
                         range_color=(0, 12),
                         projection='robinson',
                         scope="world",
@@ -204,6 +222,7 @@ def filter_scatter(country):
                         )
     fig.update_traces(marker=dict(size=20), showlegend=True,
                       selector=dict(type="carto-positron"), mode='lines+markers+text')
+    fig.update_layout(plot_bgcolor="black", paper_bgcolor="black",)
     return fig
 
 

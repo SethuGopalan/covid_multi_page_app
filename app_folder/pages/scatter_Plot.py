@@ -100,8 +100,8 @@ layout = dbc.Container([
           Input("y_dropdown", "value"))
 def filter_scatter(x_value, y_value):
     # dff = newTBdata[newTBdata['country'].isin(country)]
-    fig3 = px.scatter(newTBdata, x=x_value, y=y_value, color=newTBdata['country'],  size_max=65,
+    fig3 = px.scatter(newTBdata, x=x_value, y=y_value, color=newTBdata['country'], size=y_value, size_max=50,
                       hover_name=newTBdata['country'], )
     fig = px.scatter(newCont_data, x=newCont_data['deaths'], y=newCont_data['todayDeaths'],
-                     facet_col='continent', color=newCont_data['todayDeaths'], size_max=65)
+                     facet_col='continent', color=newCont_data['todayDeaths'], size='deaths', size_max=50)
     return fig3, fig

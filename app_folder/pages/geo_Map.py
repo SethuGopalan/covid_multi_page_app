@@ -96,9 +96,9 @@ layout = html.Div([
         dbc.Col([
             # ''' drop down for live data Continental''',
             html.Div('''Todays update by continent ''', style={
-                'color': 'green', 'fontSize': 16, 'font-family': 'Sans-serif'}),
+                'color': 'gray', 'fontSize': 16, 'font-family': 'Sans-serif'}),
             dcc.Dropdown(
-                id="new_dropdown", style={'color': 'blue', 'background': 'black', 'border': "1px black groove"},
+                id="new_dropdown", style={'color': 'gray', 'background': 'black', 'border': "1px black groove"},
                 options=[{'label': x, 'value': x}
                          for x in new_data['continent']],
 
@@ -110,9 +110,9 @@ layout = html.Div([
         dbc.Col([
             # ''' dropdown for live update country''',
             html.Div('''Todays update by country ''', style={
-                'color': 'green', 'fontSize': 16, 'font-family': 'Sans-serif'}),
+                'color': 'gray', 'fontSize': 16, 'font-family': 'Sans-serif'}),
             dcc.Dropdown(
-                id="country_dropdown", style={'color': 'blue', 'background': 'black', 'border': "1px black groove"},
+                id="country_dropdown", style={'color': 'gray', 'background': 'black', 'border': "1px black groove"},
                 options=[{'label': x, 'value': x}
                          for x in newCon_data['country']],
 

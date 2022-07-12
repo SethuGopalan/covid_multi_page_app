@@ -64,25 +64,44 @@ layout = dbc.Container([
     dbc.Row([
             dbc.Col([
                 dcc.Dropdown(
-                    id="my_dropdown", style={'color': 'black'},
-                    options=[{'label': i, 'value': i}
-                             for i in newTBdata['country']],
-                    value=["USA"],
-                    multi=True,),
+                    id="x_dropdown", style={'color': 'black'},
+                    options=[{'label': x, 'value': x}
+                             for x in newTBdata.columns],
+                    value="deaths",
+                ),
             ], width={'size': 5, 'offset': 0}),
+            dbc.Col([
+                dcc.Dropdown(
+                    id="y_dropdown", style={'color': 'black'},
+                    options=[{'label': y, 'value': y}
+                             for y in newTBdata.columns],
+                    value="todayDeaths",
+                ),
+            ], width={'size': 5, 'offset': 0}, style={"border": "2px black solid"}),
             dbc.Col([
 
                 dcc.Graph(id="graph3"),
             ], width={'size': 12, 'offset': 0}),
+            html.Br(),
+            html.Br(),
+            html.Br(),
+            dbc.Col([
+
+                dcc.Graph(id="graph4"),
+            ], width={'size': 12, 'offset': 0}, style={"border": "2px black solid"}),
 
             ], justify='center'),
-
 ])
 
 
-@callback(Output("graph3", "figure"), Input("my_dropdown", "value"))
-def filter_scatter(country):
-    dff = newTBdata[newTBdata['country'].isin(country)]
-    fig3 = px.scatter(dff, x=newTBdata['country'], y=newTBdata['deaths'], color=newTBdata['country'],  size_max=65,
+@callback(Output("graph3", "figure"),
+          Output("graph4", "figure"),
+          Input("x_dropdown", "value"),
+          Input("y_dropdown", "value"))
+def filter_scatter(x_value, y_value):
+    # dff = newTBdata[newTBdata['country'].isin(country)]
+    fig3 = px.scatter(newTBdata, x=x_value, y=y_value, color=newTBdata['country'],  size_max=65,
                       hover_name=newTBdata['country'], )
-    return fig3
+    fig = px.scatter(newCont_data, x=newCont_data['deaths'], y=newCont_data['todayDeaths'],
+                     facet_col='continent', color=newCont_data['todayDeaths'], size_max=65)
+    return fig3, fig

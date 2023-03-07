@@ -11,12 +11,12 @@ from pytz import country_names
 import requests
 import time
 import datetime
-
+from dash_bootstrap_templates import load_figure_template
 import dash_bootstrap_components as dbc
 
 
 from dash_labs.plugins.pages import register_page
-
+load_figure_template("sketchy")
 # data section
 register_page(__name__, path="/")
 #  data for Geo Map
@@ -62,7 +62,7 @@ layout = html.Div([
             # ''' drop down for geo map''',
             dbc.Col([
                 dcc.Dropdown(
-                    id="my_dropdown", style={'color': 'gold', 'background': 'black', 'border': "1px black groove"},
+                    id="my_dropdown", style={'color': 'green', 'background': 'black', 'border': "1px black groove"},
                     options=[{'label': i, 'value': i}
                              for i in newCon_data['country']],
 
@@ -222,7 +222,7 @@ def filter_scatter(country):
                         )
     fig.update_traces(marker=dict(size=20), showlegend=True,
                       selector=dict(type="carto-positron"), mode='lines+markers+text')
-    fig.update_layout(plot_bgcolor="black", paper_bgcolor="black",)
+    fig.update_layout(plot_bgcolor="gray", paper_bgcolor="white",)
     return fig
 
 

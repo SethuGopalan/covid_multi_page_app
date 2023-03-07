@@ -11,7 +11,8 @@ import pandas as pd
 import dash_bootstrap_components as dbc
 from dash_labs.plugins.pages import register_page
 import requests
-
+from dash_bootstrap_templates import load_figure_template
+load_figure_template("minty")
 register_page(__name__)
 df = pd.read_csv('app_folder\Worldwide country-level data.csv')
 dff = df.dropna(axis=1, thresh=2)
@@ -94,7 +95,7 @@ layout = dbc.Container([
     dbc.Row([
 
         dbc.Col([
-
+            html.Br(),
             dcc.RadioItems(id="cont_dropdown",
                            options=[{'label': r, 'value': r}
                                     for r in Rd_data.columns],
@@ -103,6 +104,7 @@ layout = dbc.Container([
         ], width={'size': 2, 'offset': 0}, style={"border": "2px black solid"}),
 
         dbc.Col([
+        html.Br(),
                 dcc.Graph(id="sp_graph")
                 ], width={'size': 8, 'offset': 0}, style={"border": "2px black solid"}),
     ], justify='center')
@@ -128,13 +130,13 @@ def filter_scatter(update_country, item_update, Cont_update):
 
                                         x='{} is selected'.format(str(update_country)), y='{} Covid data range'.format(str(update_country))))
 
-    fig.update_layout(plot_bgcolor="gray",
-                      paper_bgcolor="gray")
-    fig2 = px.box(
-        Rd_data, x=newCont_data['continent'], y=Cont_update, points="all",
-        boxmode="overlay")
+    fig.update_layout(plot_bgcolor="white",
+                      paper_bgcolor="white")
+    fig2 = px.bar(
+        Rd_data, x=newCont_data['continent'], y=Cont_update, labels={'x':"Continent"}
+        )
     # fig2.update_traces(color="quartilemethod")
 
-    fig2.update_layout(paper_bgcolor="gray")
+    fig2.update_layout(paper_bgcolor="white")
 
-    return fig, fig2
+    return fig, fig2 

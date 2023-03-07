@@ -10,7 +10,8 @@ import pandas as pd
 import dash_bootstrap_components as dbc
 from dash_labs.plugins.pages import register_page
 import requests
-
+from dash_bootstrap_templates import load_figure_template
+load_figure_template("sketchy")
 register_page(__name__)
 df = pd.read_csv('app_folder\Worldwide country-level data.csv')
 dff = df.dropna(axis=1, thresh=2)
@@ -86,7 +87,7 @@ layout = dbc.Container([
             html.Br(),
             html.Br(),
             dbc.Col([
-
+            html.Br(),
                 dcc.Graph(id="graph4"),
             ], width={'size': 12, 'offset': 0}, style={"border": "2px black solid"}),
 
